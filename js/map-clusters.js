@@ -106,8 +106,6 @@ var oldCities = [
     // {coords: [], name: ''},
 ];
 
-console.log(oldCities.length);
-
 var map;
 
 ymaps.ready(function () {
