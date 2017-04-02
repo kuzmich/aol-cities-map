@@ -9,7 +9,7 @@ ymaps.ready(function () {
         }
     );
 
-    var clustr = new ymaps.Clusterer({preset: 'islands#nightClusterIcons'});
+    var clustr = new ymaps.Clusterer({preset: 'islands#darkBlueClusterIcons'});
     
     cityCategoties.forEach(function (cat) {
         for (var i = 0; i < cat.cities.length; i++) {

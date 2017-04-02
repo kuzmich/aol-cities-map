@@ -197,12 +197,14 @@ var inactiveCities = [
     // {coords: [], name: ''},
 ];
 
+console.log('Всего городов: ', activeCities.length + openCities.length + newCities.length);
+
 
 var cityCategoties = [
     {name: 'active', cities: activeCities},
     {name: 'open', cities: openCities},
     {name: 'new', cities: newCities}
-]
+];
 
 
 function placemark(city, group) {
@@ -210,13 +212,16 @@ function placemark(city, group) {
 
     switch (group) {
         case 'active':
-            preset = 'islands#nightStretchyIcon';
-            break;
-        case 'open':
+            // preset = 'islands#nightStretchyIcon';
             preset = 'islands#darkBlueStretchyIcon';
             break;
+        case 'open':
+            // preset = 'islands#darkBlueStretchyIcon';
+            preset = 'islands#darkGreenStretchyIcon';
+            break;
         case 'new':
-            preset = 'islands#lightBlueStretchyIcon';
+            // preset = 'islands#lightBlueStretchyIcon';
+            preset = 'islands#darkOrangeStretchyIcon';
             break;
 
     }
