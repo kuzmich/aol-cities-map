@@ -8,15 +8,12 @@ ymaps.ready(function () {
             controls: ['geolocationControl', 'zoomControl', 'rulerControl', 'typeSelector']
         }
     );
-
-    var clustr = new ymaps.Clusterer({preset: 'islands#nightClusterIcons'});
     
     cityCategoties.forEach(function (cat) {
         for (var i = 0; i < cat.cities.length; i++) {
-            clustr.add(placemark(cat.cities[i], cat.name))
+            map.geoObjects.add(placemark(cat.cities[i], cat.name))
         }
     });
 
-    map.geoObjects.add(clustr);
     map.setBounds(map.geoObjects.getBounds());
 });
