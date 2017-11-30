@@ -9,7 +9,7 @@ ymaps.ready(function () {
         }
     );
     
-    cityCategoties.forEach(function (cat) {
+    cityCategories.forEach(function (cat) {
         for (var i = 0; i < cat.cities.length; i++) {
             map.geoObjects.add(placemark(cat.cities[i], cat.name))
         }

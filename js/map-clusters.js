@@ -11,7 +11,7 @@ ymaps.ready(function () {
 
     var clustr = new ymaps.Clusterer({preset: 'islands#darkBlueClusterIcons'});
     
-    cityCategoties.forEach(function (cat) {
+    cityCategories.forEach(function (cat) {
         for (var i = 0; i < cat.cities.length; i++) {
             clustr.add(placemark(cat.cities[i], cat.name))
         }
