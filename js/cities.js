@@ -130,7 +130,6 @@ var openCities = [
     {name: 'Гатчина', coords: [59.565155, 30.128165]}, // Северо-Западный ФО
     {name: 'Мамадыш', coords: [55.715053, 51.412883]}, // Приволжский ФО
     {name: 'Мурманск', coords: [68.969582, 33.074558]},
-    {name: 'Новочеркасск', coords: [47.424600, 40.086349]}, // Приволжский ФО
     {name: 'Петергоф', coords: [59.880396, 29.906560]}, // Северо-Западный ФО
     {name: 'Пушкин', coords: [59.727104, 30.408422]}, // Северо-Западный ФО
     {name: 'Сальск', coords: [46.475177, 41.541135]},
@@ -157,7 +156,6 @@ var newCities = [
     {name: 'Байкальск', coords: [51.523073, 104.148725]}, // Сибирский ФО
     {name: 'Верхняя Пышма', coords: [56.975804, 60.564955]},
     {name: 'Выкса', coords: [55.320683, 42.167961]}, // Приволжский ФО
-    {name: 'Вятские Поляны', coords: [56.222926, 51.074937]}, // Приволжский ФО
     {name: 'Дальнереченск', coords: [45.930850, 133.731738]}, // Дальневосточный ФО
     {name: 'Дегтярск', coords: [56.698463, 60.086674]},
     {name: 'Добрянка', coords: [58.468063, 56.403986]}, // Приволжский ФО
@@ -255,4 +253,23 @@ function placemark(city, group) {
         {iconContent: city.name},
         {preset: preset}
     );
+}
+
+
+function checkDuplicates() {
+    var seen = {};
+    var cities = activeCities.concat(openCities, newCities);
+    console.log('Дубликаты: ');
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i];
+        if (city.name in seen) {
+            console.log(city.name);
+        } else {
+            seen[city.name] = true;
+        }
+    }
+}
+
+if (/[?&]debug/.test(location.search)) {
+    checkDuplicates();
 }

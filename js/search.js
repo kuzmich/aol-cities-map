@@ -18,9 +18,10 @@ CitySearchProvider.prototype.geocode = function (request, options) {
     var i, l, city;
 
     // Ищем в любом месте свойства name города
+    var q = request.trim().toLowerCase();
     for (i = 0, l = this.cities.length; i < l; i++) {
         city = this.cities[i];
-        if (city.name.toLowerCase().indexOf(request.trim().toLowerCase()) != -1) {
+        if (city.name.toLowerCase().indexOf(q) != -1) {
             cities.push(city);
         }
     }
