@@ -9,6 +9,7 @@ ymaps.ready(function () {
         }
     );
 
+    // отключаем кластеризацию, если в URL есть ?no-clusters
     if (/[?&]no-clusters/.test(location.search)) {
         var cities = new ymaps.GeoObjectCollection();
     } else {

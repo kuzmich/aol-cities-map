@@ -20,7 +20,7 @@ CitySearchProvider.prototype.geocode = function (request, options) {
     // Ищем в любом месте свойства name города
     for (i = 0, l = this.cities.length; i < l; i++) {
         city = this.cities[i];
-        if (city.name.toLowerCase().indexOf(request.toLowerCase()) != -1) {
+        if (city.name.toLowerCase().indexOf(request.trim().toLowerCase()) != -1) {
             cities.push(city);
         }
     }
