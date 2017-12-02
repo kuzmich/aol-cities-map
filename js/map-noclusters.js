@@ -16,4 +16,24 @@ ymaps.ready(function () {
     });
 
     map.setBounds(map.geoObjects.getBounds());
+
+    // Создаем экземпляр класса ymaps.control.SearchControl
+    var citySearchControl = new ymaps.control.SearchControl({
+        options: {
+            // Заменяем стандартный провайдер данных (геокодер) нашим собственным.
+            provider: new CitySearchProvider(
+                activeCities.concat(openCities, newCities).sort(function (c1, c2) {
+                    c1.name.localeCompare(c2.name)
+                })
+            ),
+            // Не будем показывать еще одну метку при выборе результата поиска,
+            // т.к. метки коллекции myCollection уже добавлены на карту.
+            noPlacemark: true,
+            // Не будем показывать город сразу, если резальтат поиска только один
+            noSelect: true,
+            resultsPerPage: 5
+        }});
+
+    // Добавляем контрол в верхний правый угол,
+    map.controls.add(citySearchControl, { float: 'right' });
 });
