@@ -9,15 +9,19 @@ ymaps.ready(function () {
         }
     );
 
-    var clustr = new ymaps.Clusterer({preset: 'islands#darkBlueClusterIcons'});
-    
+    if (/[?&]no-clusters/.test(location.search)) {
+        var cities = new ymaps.GeoObjectCollection();
+    } else {
+        var cities = new ymaps.Clusterer({preset: 'islands#darkBlueClusterIcons'});
+    }
+
     cityCategories.forEach(function (cat) {
         for (var i = 0; i < cat.cities.length; i++) {
-            clustr.add(placemark(cat.cities[i], cat.name))
+            cities.add(placemark(cat.cities[i], cat.name))
         }
     });
 
-    map.geoObjects.add(clustr);
+    map.geoObjects.add(cities);
     map.setBounds(map.geoObjects.getBounds());
 
     // Создаем экземпляр класса ymaps.control.SearchControl
